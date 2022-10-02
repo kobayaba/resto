@@ -2,11 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
 
-import { styles } from '../../utils'
+
+import { styles, SectionButton } from '../../utils'
+
 
 
 const Product = ({ product }) => {
-	const {name, price, ingredients} = product
+	const {id, name, price, ingredients} = product
 	const { fixed } = product.img
 
 	return(
@@ -18,6 +20,14 @@ const Product = ({ product }) => {
 					<h3 className='price'>${price}</h3>
 				</div>
 				<p className='info'>{ingredients}</p>
+				<SectionButton
+					className='snipcart-add-item'
+					data-item-id={id}
+					data-item-name={name}
+					data-item-price={price}
+					data-item-image={fixed.src}
+					data-item-url="https://restoyb.netlify.app/"
+				>Order</SectionButton>
 			</div>
 		</ProductWrapper>
 	)

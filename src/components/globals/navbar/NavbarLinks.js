@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
+import { FaCartArrowDown } from 'react-icons/fa'
 
 import { styles } from '../../../utils'
 
@@ -16,11 +17,6 @@ class NavbarLinks extends React.Component{
 				id: 1,
 				path: '/about/',
 				name: 'about'
-			},
-			{
-				id: 2,
-				path: '/menu/',
-				name: 'menu'
 			},
 			{
 				id: 3,
@@ -41,12 +37,17 @@ class NavbarLinks extends React.Component{
 						</li>
 					)
 				})}
+				<FaCartArrowDown className="cart-icon snipcart-checkout" />
 			</LinkWrapper>
 		)
 	}
 }
 
 const LinkWrapper = styled.ul`
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
 	li {
 		list-style-type: none;
 	}
@@ -66,12 +67,18 @@ const LinkWrapper = styled.ul`
 			padding: 0.5rem 1rem 0.5rem 1.3rem;
 		}
 	}
+	.cart-icon {
+		cursor: pointer;
+		color: ${styles.colors.mainYellow};
+		font-size: 2rem;
+	}
 	height: ${props => (props.open ? '152px' : '0px')};
 	overflow: hidden;
 	${styles.transObject({time:'1s'})};
 	@media (min-width: 768px) {
 		height: auto;
 		display: flex;
+		flex-direction: row;
 		margin: 0 auto;
 			.nav-link:hover {
 				background: ${styles.colors.mainWhite};
